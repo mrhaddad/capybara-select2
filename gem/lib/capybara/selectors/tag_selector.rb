@@ -4,6 +4,8 @@ module Capybara
       def select2_tag(value, options = {})
         if options[:from]
           find(:fillable_field, options[:from]).set(value)
+        elsif options[:css]
+          find("#{options[:css]} input.select2-input").set(value)
         else
           find('input.select2-input').set(value)
         end
